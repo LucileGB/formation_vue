@@ -1,13 +1,14 @@
-const express = require("express");
-const serveIndex = require("serve-index");
-const api = require("./api");
+import express from "express";
+import serveIndex from "serve-index";
+
+import api from "./api";
 
 const app = express();
 const port = 3000;
 
-app.use((req, res, netx) => {
+app.use((req, res, next) => {
   console.log("req:", req.method, req.url);
-  netx();
+  next();
 });
 
 app.use("/api", api);
