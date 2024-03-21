@@ -1,10 +1,10 @@
 <template>
   <header>
-    <a href="#">
+    <RouterLink to="/">
       <!-- // Logo.svg : needs to add / so we know we start from the top for pathing -->
       <img src="/logo.svg" alt="logo" />
       <span>Gestion Stock</span>
-    </a>
+    </RouterLink>
   </header>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <footer><a href="#">Mentions légales</a></footer>
+  <footer><RouterLink to="/legal">Mentions légales</RouterLink></footer>
 </template>
 
 <style scoped>
