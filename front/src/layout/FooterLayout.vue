@@ -1,0 +1,1 @@
+<template>Footer works !</template>
