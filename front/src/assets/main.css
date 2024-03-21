@@ -11,3 +11,16 @@ body {
   flex-flow: column;
   justify-content: space-between;
 }
+
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 100ch;
+  margin: 0 auto;
+  p {
+    width: 100%;
+  }
+}
