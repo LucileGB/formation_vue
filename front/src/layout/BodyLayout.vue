@@ -1,1 +1,3 @@
-<template>Body works !</template>
+<template>
+  <RouterView />
+</template>
