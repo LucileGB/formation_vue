@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { faCircleNotch, faPlus, faRotateRight, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faRotateRight, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { onMounted, ref } from 'vue'
 import { type Article } from '../interfaces/Article'
@@ -17,12 +17,9 @@ const handleRemove = () => {
 }
 
 const handleRefresh = async () => {
-  try {
-    errorMsg.value = ''
-    await articleStore.refresh()
-  } catch (err) {
-    errorMsg.value = 'Oups... Erreur technique'
-  }
+  console.log('handleRefresh')
+  await articleStore.refresh()
+  console.log('handleRefresh finished')
 }
 const handleSelect = (a: Article) => {
   console.log(a)
@@ -31,6 +28,15 @@ const handleSelect = (a: Article) => {
     return
   }
   selectedArticles.value.add(a.id)
+}
+
+const resetErrorMsg = () => {
+  console.log('reset error')
+  errorMsg.value = ''
+}
+const setErrorMsg = (msg: string) => {
+  console.log('set error')
+  errorMsg.value = msg
 }
 
 // On passe une fonction en argument de onMounted
@@ -51,7 +57,13 @@ onMounted(() => {
     <h1>Liste des articles</h1>
     <div class="content">
       <nav>
-        <AsyncBtn label="Rafraîchir" :action="handleRefresh" :icon="faRotateRight" />
+        <AsyncBtn
+          label="Rafraîchir"
+          :action="handleRefresh"
+          :icon="faRotateRight"
+          @onstart="resetErrorMsg"
+          @onerror="setErrorMsg"
+        />
 
         <RouterLink to="/stock/add" class="button" title="Ajouter">
           <FontAwesomeIcon :icon="faPlus" />

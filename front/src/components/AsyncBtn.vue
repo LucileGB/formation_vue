@@ -8,14 +8,20 @@ const props = defineProps<{
   icon: IconDefinition
   action: () => Promise<void>
 }>()
+const emit = defineEmits<{
+  (e: 'onstart'): void
+  (e: 'onerror', value: string): void
+}>()
 const isDoing = ref(false)
 const handleAction = async () => {
   try {
     isDoing.value = true
+    emit('onstart')
     await sleep(300)
     await props.action()
   } catch (err) {
     console.log('err: ', err)
+    emit('onerror', 'oups... problème technique')
   } finally {
     isDoing.value = false
   }
