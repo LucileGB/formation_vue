@@ -1,21 +1,32 @@
 <script setup lang="ts">
-import { faPlus, faRefresh, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faRotateRight, faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-</script>
+import { type Article } from '../interfaces/Article'
+import { ref, type Ref } from 'vue'
+import { useArticleStore } from '../stores/articlesStore'
 
+const articleStore = useArticleStore()
+// const articles: ref<Article[]>([
+//   { id: 'a1', name: 'Marteau', price: 22, qty: 102 },
+//   { id: 'a2', name: 'Tournevis', price: 12, qty: 102 },
+//   { id: 'a3', name: 'Pelle', price: 52, qty: 54 }
+// ])
+</script>
 <template>
-  <main><h1>Liste des articles</h1></main>
-  <section class="content">
-    <nav>
-      <button title="Rafraîchir">
-        <FontAwesomeIcon :icon="faRefresh" />
-      </button>
-      <RouterLink to="" class="button" title="Ajouter"
-        ><FontAwesomeIcon :icon="faPlus"
-      /></RouterLink>
-      <button title="Supprimer">
-        <FontAwesomeIcon :icon="faTrash" />
-      </button>
+  <main>
+    <h1>Liste des articles</h1>
+    <div class="content">
+      <nav>
+        <button title="Rafraîchir" @click="articleStore.refresh">
+          <FontAwesomeIcon :icon="faRotateRight" />
+        </button>
+        <RouterLink to="/stock/add" class="button" title="Ajouter">
+          <FontAwesomeIcon :icon="faPlus" />
+        </RouterLink>
+        <button title="Supprimer">
+          <FontAwesomeIcon :icon="faTrashAlt" />
+        </button>
+      </nav>
       <div class="error"></div>
       <table>
         <thead>
@@ -25,26 +36,36 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
             <th class="qty">Quantité</th>
           </tr>
         </thead>
-        <thbody>
-          <tr>
-            <th class="name">Tournevis</th>
-            <th class="price">2.56 E</th>
-            <th class="qty">143</th>
+        <tbody>
+          <tr v-for="a in articleStore.articles" :key="a.id">
+            <td class="name">{{ a.name }}</td>
+            <td class="price">{{ a.price }} €</td>
+            <td class="qty">{{ a.qty }}</td>
+          </tr>
+          <!-- <tr>
+            <td class="name">Tournevis</td>
+            <td class="price">2.56 €</td>
+            <td class="qty">123</td>
           </tr>
           <tr>
-            <th class="name">Scie</th>
-            <th class="price">52.56 E</th>
-            <th class="qty">13</th>
+            <td class="name">Pelle</td>
+            <td class="price">2.56 €</td>
+            <td class="qty">123</td>
           </tr>
           <tr>
-            <th class="name">Marteau</th>
-            <th class="price">12.56 E</th>
-            <th class="qty">1432</th>
+            <td class="name">Pioche</td>
+            <td class="price">2.56 €</td>
+            <td class="qty">123</td>
           </tr>
-        </thbody>
+          <tr>
+            <td class="name">Marteau</td>
+            <td class="price">2.56 €</td>
+            <td class="qty">123</td>
+          </tr> -->
+        </tbody>
       </table>
-    </nav>
-  </section>
+    </div>
+  </main>
 </template>
 
 <style scoped>
@@ -63,20 +84,19 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 0.3em;
+  overflow: hidden;
 
-  thhead {
+  thead {
     background: #aaa;
   }
 
   th,
   td {
     padding: 0.5em 1em;
-    overflow: hidden;
   }
 
   tbody {
     cursor: pointer;
-
     tr:nth-child(even) {
       background: #eee;
     }

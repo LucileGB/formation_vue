@@ -61,10 +61,15 @@ npm run lint
 ```
 
 https://www.jlg-consulting.com/orsys/
+Github
 
 Shift + . = ouvrir le projet dans vscode
 Ctrl + shift + K : supprimer la ligne sélectionnée
 Ctrl + D après avoir sélectionné un truc
+&nbsp crée des espaces insécables
+Middleware : middleware de transition
+Pour exécuter du ts : npm exec tsc server.ts OU npx tsc server.ts
+La const app de vue est une instance de App
 
 # LIBRARIES
 
@@ -72,9 +77,25 @@ Ctrl + D après avoir sélectionné un truc
 
 # Outil
 
-Sur le navigateur : lighthouse
-[Bibliothèque pour l'internationalisation](https://www.i18next.com/)
+- Sur le navigateur : lighthouse (dispo par exemple [pour Chrome](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk))
+- [Bibliothèque pour l'internationalisation](https://www.i18next.com/)
+- [Thunderclient](https://www.thunderclient.com/) pour tester une API depuis VSCode
+- [Serveindex](https://www.npmjs.com/package/serve-index) pour qu'accéder à une page (par ex : localhost:3000/MesDocuments) permette de naviguer dans les dossier.
+- Pour recharger le serveur dès qu'il y a changement : [Nodemon](https://www.npmjs.com/package/nodemon)
+- CSS : normalize.css normalise le CSS pour qu'il soit compatible entre navigateurs.
+- W3c validator pour valider le HTML avec W3c.
 
-# Sites recommandés
+# Sites et lectures recommandées
 
 [WebDev](https://web.dev/?hl=fr)
+[Refactoring Guru](https://refactoring.guru/fr)
+
+- One Hundred Things Every Designer Needs to Know
+- Refactoring UI
+
+# Bonne pratique
+
+- Ne s'intéresser à la performance que quand elle pose problème
+- Gérer le serveur-side rendering : c'est utile pour l'indexeur google
+- Dans le ReadMe, indiquer la version de node
+- Dans package-json : toujours remplir test/start
