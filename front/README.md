@@ -70,4 +70,11 @@ Ctrl + D après avoir sélectionné un truc
 
 [FontAwesome](https://docs.fontawesome.com/web/use-with/vue) allow for the use of free SVG icons.
 
-#
+# Outil
+
+Sur le navigateur : lighthouse
+[Bibliothèque pour l'internationalisation](https://www.i18next.com/)
+
+# Sites recommandés
+
+[WebDev](https://web.dev/?hl=fr)

@@ -1,10 +1,21 @@
+<script setup lang="ts">
+import { faPlus, faRefresh, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+</script>
+
 <template>
   <main><h1>Liste des articles</h1></main>
   <section class="content">
     <nav>
-      <button>Rafraîchir</button>
-      <RouterLink to="" class="button">Ajouter</RouterLink>
-      <button>Supprimer</button>
+      <button title="Rafraîchir">
+        <FontAwesomeIcon :icon="faRefresh" />
+      </button>
+      <RouterLink to="" class="button" title="Ajouter"
+        ><FontAwesomeIcon :icon="faPlus"
+      /></RouterLink>
+      <button title="Supprimer">
+        <FontAwesomeIcon :icon="faTrash" />
+      </button>
       <div class="error"></div>
       <table>
         <thead>
