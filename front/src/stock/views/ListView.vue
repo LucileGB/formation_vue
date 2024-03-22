@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import { faRotateRight, faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faRotateRight, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { ref } from 'vue'
 import { type Article } from '../interfaces/Article'
-import { ref, type Ref } from 'vue'
 import { useArticleStore } from '../stores/articlesStore'
 
 const articleStore = useArticleStore()
-// const articles: ref<Article[]>([
-//   { id: 'a1', name: 'Marteau', price: 22, qty: 102 },
-//   { id: 'a2', name: 'Tournevis', price: 12, qty: 102 },
-//   { id: 'a3', name: 'Pelle', price: 52, qty: 54 }
-// ])
+const selectedArticles = ref<Set<Article['id']>>(new Set())
+const handleSelect = (a: Article) => {
+  console.log(a)
+  if (selectedArticles.value.has(a.id)) {
+    selectedArticles.value.delete(a.id)
+    return
+  }
+  selectedArticles.value.add(a.id)
+}
 </script>
 <template>
   <main>
@@ -23,7 +27,8 @@ const articleStore = useArticleStore()
         <RouterLink to="/stock/add" class="button" title="Ajouter">
           <FontAwesomeIcon :icon="faPlus" />
         </RouterLink>
-        <button title="Supprimer">
+        <!-- Mieux vaut cacher un élément que le reconstruire de zéro -->
+        <button title="Supprimer" :hidden="selectedArticles.size === 0">
           <FontAwesomeIcon :icon="faTrashAlt" />
         </button>
       </nav>
@@ -37,7 +42,12 @@ const articleStore = useArticleStore()
           </tr>
         </thead>
         <tbody>
-          <tr v-for="a in articleStore.articles" :key="a.id">
+          <tr
+            v-for="a in articleStore.articles"
+            :key="a.id"
+            @click="handleSelect(a)"
+            :class="{ selected: selectedArticles.has(a.id) }"
+          >
             <td class="name">{{ a.name }}</td>
             <td class="price">{{ a.price }} €</td>
             <td class="qty">{{ a.qty }}</td>

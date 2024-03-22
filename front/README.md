@@ -61,15 +61,22 @@ npm run lint
 ```
 
 https://www.jlg-consulting.com/orsys/
-Github
+[Code source du projet réalisé](https://github.com/jlg-formation/vjspa1-mars-2024/tree/master)
+[PDF et powerpoint sur le projet](https://www.jlg-consulting.com/orsys/VJS/)
 
 Shift + . = ouvrir le projet dans vscode
 Ctrl + shift + K : supprimer la ligne sélectionnée
 Ctrl + D après avoir sélectionné un truc
+Shift + alt + o organise les imports (dans jetbrain, c'est ctrl + alt + o)
 &nbsp crée des espaces insécables
+nfn et touche droite/tab pour entrer des paramètres => crée une fonction nommée
+En javascript : si pas de notion d'ordre, faire un ensemble (un Set), si notion d'ordre, faire un tableau
 Middleware : middleware de transition
 Pour exécuter du ts : npm exec tsc server.ts OU npx tsc server.ts
 La const app de vue est une instance de App
+Dans le routeur, si on laisse un href, ça fait un appel au serveur. Pareil pour un bouton avec @submit, si on n'inhibe pas le comportement avec @submit.prevent
+Dans router, différence entre push et replace : push est dans l'historique, tandis que replace, non
+[Déployer un prototype Vue gratuitement](https://blog.logrocket.com/top-services-deploy-vue-app-free/)
 
 # LIBRARIES
 
@@ -99,3 +106,5 @@ La const app de vue est une instance de App
 - Gérer le serveur-side rendering : c'est utile pour l'indexeur google
 - Dans le ReadMe, indiquer la version de node
 - Dans package-json : toujours remplir test/start
+- L'action utilisateur ne doit pas modifier directement l'apparence, mais L'ETAT du composant, dont l'apparence va en retour refléter son état
+- Une fonction ne fait QU'UNE SEULE CHOSE.

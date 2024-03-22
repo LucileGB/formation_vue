@@ -30,7 +30,7 @@ export const useArticleStore = defineStore('articleStore', () => {
     if (articles.value === undefined) {
       throw new Error('Cannot add articles if not refreshed first')
     }
-    articles.value.push({ ...newArticle, id: 'xxx' })
+    articles.value.push({ ...newArticle, id: window.crypto.randomUUID() })
   }
 
   // On peut mettre ids: string[] ou ids: Article['id'][], qui aura aussi la
