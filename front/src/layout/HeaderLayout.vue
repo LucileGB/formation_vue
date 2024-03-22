@@ -1,9 +1,19 @@
+<script setup lang="ts">
+import { defineProps } from 'vue'
+const props = defineProps({
+  label: {
+    type: String,
+    required: true
+  }
+})
+</script>
+
 <template>
   <header>
     <RouterLink to="/">
       <!-- // Logo.svg : needs to add / so we know we start from the top for pathing -->
       <img src="/logo.svg" alt="logo" />
-      <span>Gestion Stock</span>
+      <span>{{ props.label }}</span>
     </RouterLink>
   </header>
 </template>

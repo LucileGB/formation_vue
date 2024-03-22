@@ -31,13 +31,9 @@ export const useArticleStore = defineStore('articleStore', () => {
 
   // On peut mettre ids: string[] ou ids: Article['id'][], qui aura aussi la
   // valeur string
-  const remove = (ids: string[]) => {
-    console.log('Removed article')
-
-    if (articles.value === undefined) {
-      throw new Error('Cannot remove article if not refreshed first')
-    }
-    articles.value = articles.value.filter((a) => !ids.includes(a.id))
+  const remove = async (ids: Article['id'][]) => {
+    await api.remove(ids)
+    articles.value = await api.getArticles()
   }
   return { articles, articleTotal, refresh, add, remove }
 })

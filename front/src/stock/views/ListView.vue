@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { onMounted, ref } from 'vue'
 import { type Article } from '../interfaces/Article'
 import { useArticleStore } from '../stores/articlesStore'
+import AsyncBtn from '../../components/AsyncBtn.vue'
 
 const articleStore = useArticleStore()
 const errorMsg = ref('')
@@ -18,12 +19,10 @@ const handleRemove = () => {
 const handleRefresh = async () => {
   try {
     errorMsg.value = ''
-    isRefreshing.value = true
     await articleStore.refresh()
   } catch (err) {
     errorMsg.value = 'Oups... Erreur technique'
   }
-  isRefreshing.value = false
 }
 const handleSelect = (a: Article) => {
   console.log(a)
@@ -52,12 +51,8 @@ onMounted(() => {
     <h1>Liste des articles</h1>
     <div class="content">
       <nav>
-        <button title="Rafraîchir" @click="handleRefresh">
-          <FontAwesomeIcon
-            :spin="isRefreshing"
-            :icon="isRefreshing ? faRotateRight : faCircleNotch"
-          />
-        </button>
+        <AsyncBtn label="Rafraîchir" :action="handleRefresh" :icon="faRotateRight" />
+
         <RouterLink to="/stock/add" class="button" title="Ajouter">
           <FontAwesomeIcon :icon="faPlus" />
         </RouterLink>

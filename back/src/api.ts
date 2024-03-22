@@ -12,8 +12,8 @@ let articles: Article[] = [
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Headers", "*");
-  res.set("Access-Control-Allow-Methods", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.setHeader("Access-Control-Allow-Methods", "*");
   next();
 });
 
