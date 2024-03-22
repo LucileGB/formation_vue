@@ -65,3 +65,9 @@ https://www.jlg-consulting.com/orsys/
 Shift + . = ouvrir le projet dans vscode
 Ctrl + shift + K : supprimer la ligne sélectionnée
 Ctrl + D après avoir sélectionné un truc
+
+# LIBRARIES
+
+[FontAwesome](https://docs.fontawesome.com/web/use-with/vue) allow for the use of free SVG icons.
+
+#
