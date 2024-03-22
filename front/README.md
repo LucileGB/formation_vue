@@ -77,6 +77,7 @@ La const app de vue est une instance de App
 Dans le routeur, si on laisse un href, ça fait un appel au serveur. Pareil pour un bouton avec @submit, si on n'inhibe pas le comportement avec @submit.prevent
 Dans router, différence entre push et replace : push est dans l'historique, tandis que replace, non
 [Déployer un prototype Vue gratuitement](https://blog.logrocket.com/top-services-deploy-vue-app-free/)
+Les fonctions async renvoient automatiquement une promesse
 
 # LIBRARIES
 
@@ -91,11 +92,14 @@ Dans router, différence entre push et replace : push est dans l'historique, tan
 - Pour recharger le serveur dès qu'il y a changement : [Nodemon](https://www.npmjs.com/package/nodemon)
 - CSS : normalize.css normalise le CSS pour qu'il soit compatible entre navigateurs.
 - W3c validator pour valider le HTML avec W3c.
+- Pour VSCode, Surround entoure le code choisi du wrapper désiré
+- Reorganiser sa classe typescript : TypeScript Class Organizer
 
 # Sites et lectures recommandées
 
 [WebDev](https://web.dev/?hl=fr)
 [Refactoring Guru](https://refactoring.guru/fr)
+[Loi de la UX](https://ux-lois.github.io/)
 
 - One Hundred Things Every Designer Needs to Know
 - Refactoring UI

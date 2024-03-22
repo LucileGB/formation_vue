@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { type Article, type NewArticle } from '../interfaces/Article'
+import { api } from '../api'
 
 export const useArticleStore = defineStore('articleStore', () => {
   // Ci-dessous, je dis à ref que le type est soit Article[], soit undefined
@@ -14,23 +15,18 @@ export const useArticleStore = defineStore('articleStore', () => {
     }
     return articles.value.length
   })
-  const refresh = () => {
-    // Jean-Louis préfère la fonction fléchée avec const pour mieux
-    // savoir qui est le this : si fléchée, le this est égal au this
-    // à l'extérieur de la fonction ; sinon, on doit var self = this
-    articles.value = [
-      { id: 'a1', name: 'Marteau', price: 122, qty: 102 },
-      { id: 'a2', name: 'Tournevis', price: 112, qty: 102 },
-      { id: 'a3', name: 'Pelle', price: 152, qty: 54 }
-    ]
+  // Jean-Louis préfère la fonction fléchée avec const pour mieux
+  // savoir qui est le this : si fléchée, le this est égal au this
+  // à l'extérieur de la fonction ; sinon, on doit var self = this
+  const refresh = async () => {
+    articles.value = await api.getArticles()
   }
 
-  const add = (newArticle: NewArticle) => {
-    console.log('Adding article')
+  const add = async (newArticle: NewArticle) => {
+    await api.add(newArticle)
     if (articles.value === undefined) {
       throw new Error('Cannot add articles if not refreshed first')
     }
-    articles.value.push({ ...newArticle, id: window.crypto.randomUUID() })
   }
 
   // On peut mettre ids: string[] ou ids: Article['id'][], qui aura aussi la

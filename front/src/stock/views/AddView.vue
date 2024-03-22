@@ -11,9 +11,9 @@ const articleStore = useArticleStore()
 const router = useRouter()
 
 const newArticle = ref<NewArticle>({ name: '', price: 0, qty: 0 })
-const handleSubmit = () => {
+const handleSubmit = async () => {
   console.log('submit form')
-  articleStore.add(newArticle.value)
+  await articleStore.add(newArticle.value)
   router.push('/stock')
 }
 </script>
