@@ -1,19 +1,17 @@
 @import '../../node_modules/normalize.css/normalize.css';
+@import './css/button.css';
 
 * {
   box-sizing: border-box;
 }
-body {
-  /* margin: 0px; */
-  font-family: sans-serif;
-}
 
-h1 {
-  text-align: center;
+body {
+  font-family: sans-serif;
 }
 
 #app {
   min-height: 100vh;
+
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -21,16 +19,23 @@ h1 {
 
 main {
   flex: 1;
+
   display: flex;
   flex-flow: column;
   align-items: center;
+  gap: 0.5em;
 
   width: 100%;
   max-width: 100ch;
   margin: 0 auto;
+
   padding: 0.5em;
 
   p {
     width: 100%;
+  }
+
+  h1 {
+    text-align: center;
   }
 }

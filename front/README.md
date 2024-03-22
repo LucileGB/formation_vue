@@ -61,3 +61,7 @@ npm run lint
 ```
 
 https://www.jlg-consulting.com/orsys/
+
+Shift + . = ouvrir le projet dans vscode
+Ctrl + shift + K : supprimer la ligne sélectionnée
+Ctrl + D après avoir sélectionné un truc
